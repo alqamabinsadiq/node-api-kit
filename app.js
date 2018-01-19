@@ -8,25 +8,16 @@ var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 var passport = require('passport');
 var authenticate = require('./authenticate');
-var config = require('./config');
+// var config = require('./config');
 const mongoose = require('mongoose');
-
+const database = require('./server/database');
 // Setup mongoose to use bluebird library for promise handling
 mongoose.Promise = require('bluebird');
 
-// const Dishes = require('./models/dishes');
+// database connection
+database.connect();
 
-// Connection URL
-const url = config.mongoUrl;
-const connect = mongoose.connect(url, {
-  useMongoClient: true,
-  /* other options */
-});
-
-connect.then((db) => {
-  console.log("Connected correctly to server");
-}, (err) => { console.log(err); });
-
+// express app.
 var app = express();
 
 // Secure traffic only
@@ -68,15 +59,31 @@ app.use(function (req, res, next) {
   next(err);
 });
 
-// error handler
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
+// error handlers
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(function (err, req, res, next) {
+    res.status(err.status || 500);
+    res.json({
+      success: false,
+      message: err.message,
+      data: err
+    });
+  });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function (err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error');
+  res.json({
+    success: false,
+    message: err.message,
+    data: null
+  });
 });
 
 module.exports = app;
