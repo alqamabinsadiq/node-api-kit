@@ -14,7 +14,7 @@ const mongoose = require('mongoose');
 // Setup mongoose to use bluebird library for promise handling
 mongoose.Promise = require('bluebird');
 
-const Dishes = require('./models/dishes');
+// const Dishes = require('./models/dishes');
 
 // Connection URL
 const url = config.mongoUrl;
