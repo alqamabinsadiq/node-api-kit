@@ -10,6 +10,7 @@ var passport = require('passport');
 var authenticate = require('./authenticate');
 var config = require('./config');
 const mongoose = require('mongoose');
+
 // Setup mongoose to use bluebird library for promise handling
 mongoose.Promise = require('bluebird');
 
@@ -25,15 +26,6 @@ const connect = mongoose.connect(url, {
 connect.then((db) => {
   console.log("Connected correctly to server");
 }, (err) => { console.log(err); });
-
-
-var index = require('./routes/index');
-let users = require('./routes/users');
-let dishRouter = require('./routes/dishRouter');
-let promoRouter = require('./routes/promoRouter');
-let leaderRouter = require('./routes/leaderRouter');
-let uploadRouter = require('./routes/uploadRouter');
-let favoriteRouter = require('./routes/favoriteRouter');
 
 var app = express();
 
@@ -62,15 +54,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize());
 
+// index route
+const index = require('./routes/index');
 app.use('/', index);
-app.use('/users', users);
 
-// Routes
-app.use('/dishes', dishRouter);
-app.use('/promotions', promoRouter);
-app.use('/leaders', leaderRouter);
-app.use('/imageUpload', uploadRouter);
-app.use('/favorites', favoriteRouter);
+//Requiring routes
+require("./routes/router")(app);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
