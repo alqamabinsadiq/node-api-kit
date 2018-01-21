@@ -1,12 +1,12 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var User = require('./features/users/userModel');
+var User = require('../features/users/userModel');
 var JwtStrategy = require('passport-jwt').Strategy;
 var ExtractJwt = require('passport-jwt').ExtractJwt;
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var FacebookTokenStrategy = require('passport-facebook-token');
 
-var config = require('./config.js');
+var config = require('../config/config');
 // passport.use(new LocalStrategy(here we supply the verify function since we are using passport mongoose
 // plugin so we can use authenticate method supplied by it ))
 exports.local = passport.use(new LocalStrategy(User.authenticate()));

@@ -2,7 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const User = require('./userModel');
-const authenticate = require('../../authenticate');
+const authenticate = require('../../server/authenticate');
 
 exports.register = (req, res) => {
   User.register(new User({ username: req.body.username }),

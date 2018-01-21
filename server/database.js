@@ -1,4 +1,4 @@
-const config = require('../config');
+const config = require('../config/config');
 const mongoose = require('mongoose');
 const log = require('tracer').console({ format: "{{message}}  - {{file}}:{{line}}" }).log;
 
