@@ -111,4 +111,9 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
+
+  art.font('node    api    server', 'Doom', function (rendered) {
+    console.log(rendered);
+  });
+  log("###########################################################################");
 }
