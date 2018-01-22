@@ -1,6 +1,6 @@
 {
-  "name": "confusionserver",
-  "version": "0.0.0",
+  "name": "node-api-kit",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www"

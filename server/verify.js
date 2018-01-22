@@ -28,7 +28,6 @@ exports.verifyAdmin = (req, res, next) => {
 };
 
 
-
 exports.verifyUser = (req, res, next) => {
   passport.authenticate('jwt', { session: false }, (err, user, info) => {
     console.log("user", user);
