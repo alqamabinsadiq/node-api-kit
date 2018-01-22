@@ -6,6 +6,8 @@ const authenticate = require('../../server/authenticate');
 var log = require('tracer').console({ format: "{{message}}  - {{file}}:{{line}}" }).log;
 const verify = require('../../server/verify');
 var Q = require('q');
+const Iron = require('iron');
+const config = require('../../config/config');
 
 exports.listAll = (req, res, next) => {
   User.find({}, (err, user) => {
@@ -96,5 +98,19 @@ exports.logout = (req, res) => {
     var err = new Error('You are not logged in!');
     err.status = 403;
     next(err);
+  }
+};
+
+exports.facebookAuthentication = (req, res) => {
+  if (req.user) {
+    Iron.seal(request.user._id, config.sealPass, Iron.defaults, (err, sealed) => {
+      if (err) {
+        deferred.reject(err);
+      }
+      var token = verify.getToken({ _id: sealed }, expiry || "30 days");
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
+      res.json({ success: true, token: token, status: 'You are successfully logged in!' });
+    });
   }
 };

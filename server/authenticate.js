@@ -87,6 +87,7 @@ exports.getLoginData = (user, expiry) => {
   return deferred.promise;
 };
 
+// Facebook
 exports.facebookPassport = passport.use(new FacebookTokenStrategy({
   clientID: config.facebook.clientId,
   clientSecret: config.facebook.clientSecret

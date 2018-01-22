@@ -9,6 +9,8 @@ var debug = require('debug')('confusionserver:server');
 var http = require('http');
 var https = require('https');
 var fs = require('fs');
+var log = require('tracer').console({ format: "{{message}}  - {{file}}:{{line}}" }).log;
+var art = require('ascii-art');
 
 /**
  * Get port from environment and store in Express.
