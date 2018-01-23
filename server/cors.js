@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
+// whitelist array.
 const whitelist = ['http://localhost:3000', 'https://localhost:3443'];
 
 // This checks the origin in header of the request message and returns the origin value.

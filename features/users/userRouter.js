@@ -16,11 +16,10 @@ router.get('/', cors.corsWithOptions, verify.verifyUser, verify.verifyAdmin, use
 // Registers User.
 router.post('/signup', cors.corsWithOptions, userCtrl.register);
 
-// We don't need to handle the error here because it is already taken care of by 
-// passport local mongoose plugin.
+// Logins the user.
 router.post('/login', cors.corsWithOptions, userCtrl.login);
 
-// separate route for facbook oAuth.
+// separate route for facebook oAuth2.
 router.get('/facebook/token', passport.authenticate('facebook-token'), userCtrl.facebookAuthentication);
 
 // logouts the user by destroying the session.

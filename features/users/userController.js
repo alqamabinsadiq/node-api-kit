@@ -16,6 +16,7 @@ exports.listAll = (req, res, next) => {
   });
 };
 
+
 exports.login = (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
     if (err) {
@@ -36,7 +37,6 @@ exports.login = (req, res, next) => {
         });
       }
       const token = authenticate.getLoginData(user).then((data) => {
-        console.log(data);
         return res.status(200).json({
           message: 'Login successful!',
           success: true,
@@ -44,7 +44,6 @@ exports.login = (req, res, next) => {
         });
       },
         (err) => {
-          console.log(err);
           return res.status(400).json({
             message: 'Something went wrong while login.',
             success: false,

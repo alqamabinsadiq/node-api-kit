@@ -8,7 +8,6 @@ var session = require('express-session');
 var FileStore = require('session-file-store')(session);
 var passport = require('passport');
 var authenticate = require('./server/authenticate');
-// var config = require('./config');
 const mongoose = require('mongoose');
 const database = require('./server/database');
 // Setup mongoose to use bluebird library for promise handling
@@ -20,6 +19,7 @@ database.connect();
 // express app.
 var app = express();
 
+// Remove the following code if you donot want to use secure server.
 // Secure traffic only
 app.all('*', (req, res, next) => {
   if (req.secure) {
@@ -40,8 +40,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(cookieParser('12345-67890-09876-54321'));
-
 
 app.use(passport.initialize());
 
@@ -60,7 +58,7 @@ app.use(function (req, res, next) {
 });
 
 
-// error handlers
+// Error handlers
 
 // development error handler
 // will print stacktrace
@@ -75,7 +73,7 @@ if (app.get('env') === 'development') {
   });
 }
 
-// production error handler
+// Production error handler
 // no stacktraces leaked to user
 app.use(function (err, req, res, next) {
   res.status(err.status || 500);

@@ -18,7 +18,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 /* 
-Opts containse the information for JwtStrategy, 
+Opts contains the information for JwtStrategy, 
 which involves where to get the token and what is our secret key 
 */
 
@@ -30,7 +30,6 @@ exports.jwtPassport = passport.use(new JwtStrategy(opts,
   (jwt_payload, done) => {
     console.log("JWT payload: ", jwt_payload);
     Iron.unseal(jwt_payload._id, config.sealPass, Iron.defaults, function (err, unsealed) {
-      console.log(3);
       if (err) {
         return res.status(500).json({
           message: 'User verification error',
@@ -39,8 +38,6 @@ exports.jwtPassport = passport.use(new JwtStrategy(opts,
         });
       }
       else {
-        // req.user = unsealed;
-        console.log(unsealed);
         User.findOne({ _id: unsealed }, (err, user) => {
           if (err) {
             return done(err, false);
@@ -60,27 +57,14 @@ exports.jwtPassport = passport.use(new JwtStrategy(opts,
 
 
 exports.getLoginData = (user, expiry) => {
-  var userData = user._doc;
-  delete userData.hash;
-  delete userData.salt;
-  delete userData.resetToken;
-  delete userData.admin;
-  delete userData.firstname;
-  delete userData.lastname;
-  delete userData.createdAt;
-  delete userData.updatedAt;
-  delete userData.username;
-  delete userData.__v;
-
-
-  console.log("1", userData);
+  var userData = user._doc._id;
   var deferred = Q.defer();
+  // Encrypt the data using iron.
   Iron.seal(userData, config.sealPass, Iron.defaults, (err, sealed) => {
-    console.log('2');
     if (err) {
       deferred.reject(err);
     }
-    console.log(sealed);
+    // generate the jwt for the encrypted data.
     var token = verify.getToken({ _id: sealed }, expiry || "30 days");
     deferred.resolve(token);
   });
@@ -114,5 +98,3 @@ exports.facebookPassport = passport.use(new FacebookTokenStrategy({
   });
 }
 ));
-
-// exports.verifyUser = passport.authenticate('jwt', { session: false });

@@ -36,8 +36,10 @@ server.on('listening', onListening);
 
 /**
  * Create HTTPS server.
+ * You can simple remove the secure server code by simply commenting it's section.
  */
 
+// Read the certificate and private key from bin folder.
 var options = {
   key: fs.readFileSync(__dirname + '/private.key'),
   cert: fs.readFileSync(__dirname + '/certificate.pem')
