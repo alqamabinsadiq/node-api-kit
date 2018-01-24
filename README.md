@@ -12,21 +12,21 @@ This API kit will be running on a secure port `3443`. You can remove the code fo
 ```bash
 .
 ├── /bin/
-|       ├── www/                   
+│       ├── www/                   
 ├── /config/
-|          ├── config.js/            
+│          ├── config.js/            
 ├── /features/                       
 │   ├── /users/
-|             ├── userController.js/
-|             ├── userModel.js/
-|             ├── userRouter.js/           
+│             ├── userController.js/
+│             ├── userModel.js/
+│             ├── userRouter.js/           
 │   ├── /routes/
-|              ├── router.js/      
+│              ├── router.js/      
 │   ├── /server/
-|             ├── authenticate.js/
-|             ├── cors.js/
-|             ├── database.js/            
-|             ├── verify.js/              
+│             ├── authenticate.js/
+│             ├── cors.js/
+│             ├── database.js/            
+│             ├── verify.js/              
 ├── app.js                     
 ├── package.json               
 └── postgres-initdb.sh         
@@ -39,11 +39,11 @@ Just clone the repo and run `npm install` by going into the `NODE-API-KIT` folde
 
 The api is configured to run on a secure server so you need to run the following commands if you are using a macOS:
 
-`
+```
   openssl genrsa 1024 > private.key
   openssl req -new -key private.key -out cert.csr
   openssl x509 -req -in cert.csr -signkey private.key -out certificate.pem
-`
+```
 
 Windows user will have to install the Openssl first.
 
