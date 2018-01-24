@@ -1,7 +1,7 @@
 # Node.js API Kit
 
 ## Motivation
-Created the API structure for your projects again and again is very annoying and difficult especially for the starters.
+Creating the API structure for your projects again and again is very annoying and difficult especially for the starters.
 So I created an API structure which includes all the pre-requisites including the authentication(Which I think is the most difficult task to implement if you are a newbie)
 I want to make it public so that everyone can take benefit from it and contribute to make it even better.
 This API kit will be running on a secure port `3443`. You can remove the code for `https` server from `./bin/www`.
@@ -14,20 +14,20 @@ This API kit will be running on a secure port `3443`. You can remove the code fo
 ├── /bin/
 │       ├── www/                   
 ├── /config/
-│          ├── config.js/            
+│          ├── config.js/               # contains connection urls and secret keys.
 ├── /features/                       
 │   ├── /users/
-│             ├── userController.js/
-│             ├── userModel.js/
-│             ├── userRouter.js/           
+│             ├── userController.js/    # Controller for /api/users
+│             ├── userModel.js/         # User Model
+│             ├── userRouter.js/        # Contains verbs of user.
 │   ├── /routes/
-│              ├── router.js/      
+│              ├── router.js/           # Main router file.
 │   ├── /server/
-│             ├── authenticate.js/
-│             ├── cors.js/
-│             ├── database.js/            
-│             ├── verify.js/              
-├── app.js                     
+│             ├── authenticate.js/      # Contains all the authentication methods and strategies.
+│             ├── cors.js/              # This file contins the CORS configuration.
+│             ├── database.js/          # Databse configuration.
+│             ├── verify.js/            # All the encryption and decryption methods which we are using to generate and verify the tokens
+├── app.js                              # main file
 ├── package.json               
 └── postgres-initdb.sh         
 ```
