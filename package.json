@@ -1,10 +1,12 @@
 {
   "name": "node-api-kit",
   "version": "0.0.1",
-  "private": true,
+  "description": " Starter kit for creating node.js server with express and MongoDB",
   "scripts": {
     "start": "nodemon ./bin/www"
   },
+  "author": "Alqama Bin Sadiq",
+  "license": "MIT",
   "dependencies": {
     "ascii-art": "^1.4.2",
     "bluebird": "^3.5.1",
