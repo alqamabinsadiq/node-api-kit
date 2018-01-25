@@ -1,6 +1,5 @@
 # Node.js API Kit
 
-## Motivation
 Creating the API structure for your projects again and again is very annoying and difficult especially for the starters.
 So I created an API structure which includes all the pre-requisites including the authentication(Which I think is the most difficult task to implement if you are a newbie)
 I want to make it public so that everyone can take benefit from it and contribute to make it even better.
