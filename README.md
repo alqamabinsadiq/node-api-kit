@@ -46,7 +46,22 @@ The api is configured to run on a secure server so you need to run the following
 
 Windows user will have to install the Openssl first.
 
-If you don't want to run the api on a secure server you can remove the code anytime by simply going into the `/bin/www` folder.
+If you don't want to run the api on a secure server you can remove the code anytime by simply going into the `/bin/www` folder. 
+
+Also you will have to remove the following code from `app.js`
+
+```
+  // Remove the following code if you donot want to use secure server.
+  // Secure traffic only
+  app.all('*', (req, res, next) => {
+    if (req.secure) {
+      return next();
+    }
+    else {
+      res.redirect(307, 'https://' + req.hostname + ':' + app.get('secPort') + req.url);
+    }
+  });
+```
 
 
 The API server must become available at [https://localhost:3443/api](https://localhost:3443/api) If you are using https.
