@@ -36,7 +36,9 @@ This API kit will be running on a secure port `3443`. You can remove the code fo
 
 Just clone the repo and run `npm install` by going into the `NODE-API-KIT` folder:
 
-The api is configured to run on a secure server so you need to run the following commands if you are using a macOS:
+### Generating Private Key and Certificate
+
+The api is configured to run on a secure server. If you are using a macOS, go to the `bin` folder and then create the private key and certificate by typing the following at the prompt
 
 ```
   openssl genrsa 1024 > private.key
@@ -44,11 +46,42 @@ The api is configured to run on a secure server so you need to run the following
   openssl x509 -req -in cert.csr -signkey private.key -out certificate.pem
 ```
 
-Windows user will have to install the Openssl first.
+### Note for Windows Users
+
+If you are using a Windows machine, you may need to install openssl. You can find some openssl binary distributions [here](https://wiki.openssl.org/index.php/Binaries). Also, [this article](http://blog.didierstevens.com/2015/03/30/howto-make-your-own-cert-with-openssl-on-windows/) gives the steps for generating the certificates in Windows. Another [article](http://www.faqforge.com/windows/use-openssl-on-windows/) provides similar instructions. Here's an [online](http://www.selfsignedcertificate.com/) service to generate self-signed certificates.
+
+#### NOTE: 
+Please make sure that you have generated the certificate and the private key in the `bin` folder.
+
+### How To Run The API On Simple HTTP Server
 
 If you don't want to run the api on a secure server you can remove the code anytime by simply going into the `/bin/www` folder. 
 
-Also you will have to remove the following code from `app.js`
+Remove the following code from `/bin/www`
+```
+  /**
+  * Create HTTPS server.
+  * You can simple remove the secure server code by simply commenting it's section.
+  */
+
+  // Read the certificate and private key from bin folder.
+  var options = {
+    key: fs.readFileSync(__dirname + '/private.key'),
+    cert: fs.readFileSync(__dirname + '/certificate.pem')
+  };
+
+  var secureServer = https.createServer(options, app);
+  /**
+  * Listen on provided port, on all network interfaces.
+  */
+
+  secureServer.listen(app.get('secPort'), () => {
+    console.log('Secure Server listening on port ', app.get('secPort'));
+  });
+  secureServer.on('error', onError);
+  secureServer.on('listening', onListening);
+```
+Also remove the following code from `app.js`
 
 ```
   // Remove the following code if you donot want to use secure server.
@@ -64,7 +97,7 @@ Also you will have to remove the following code from `app.js`
 ```
 
 
-The API server must become available at [https://localhost:3443/api](https://localhost:3443/api) If you are using https.
+The API server must become available at [https://localhost:3443/api](https://localhost:3443/api) If you are using HTTPS.
 
 Otherwise it will be available at  [http://localhost:3000/api](http://localhost:3000/api)
 
