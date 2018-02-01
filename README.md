@@ -101,9 +101,16 @@ The API server must become available at [https://localhost:3443/api](https://loc
 
 Otherwise it will be available at  [http://localhost:3000/api](http://localhost:3000/api)
 
+### CORS Configuration
+
+If you are running your api on PORT other than 3000 or 3443 then you must update the whitelist which is inside the CORS configuration file.
+
+Just go to the `./server/cors.js` and update the whitelist array. 
+
+**Example:** `const whitelist = ['http://localhost:3000', 'https://localhost:3443', 'http://localhost:myport'];`
+
 ## License
 This source code is licensed under the MIT license.
 
 ---
 Made with ♥ by ALQAMA BIN SADIQ [github](https://github.com/alqamabinsadiq/node-api-kit)
-
