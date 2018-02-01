@@ -2,6 +2,7 @@ const config = require('../config/config');
 const mongoose = require('mongoose');
 const log = require('tracer').console({ format: "{{message}}  - {{file}}:{{line}}" }).log;
 
+// Database connection.
 exports.connect = () => {
   // Connection URL
   const url = config.mongoUrl;

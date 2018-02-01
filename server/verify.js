@@ -49,6 +49,7 @@ exports.verifyUser = (req, res, next) => {
   })(req, res, next);
 }
 
+// Unseal the data which was encrypted using iron npm module.
 exports.unseal = function (req, res, next) {
   Iron.unseal(req.user, config.sealPass, Iron.defaults, function (err, unsealed) {
     if (err) {
@@ -65,4 +66,3 @@ exports.unseal = function (req, res, next) {
     }
   });
 };
-// exports.verifyUser = passport.authenticate('jwt', { session: false });
