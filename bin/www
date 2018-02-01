@@ -10,7 +10,7 @@ var http = require('http');
 var https = require('https');
 var fs = require('fs');
 var log = require('tracer').console({ format: "{{message}}  - {{file}}:{{line}}" }).log;
-var art = require('ascii-art');
+// var art = require('ascii-art');
 
 /**
  * Get port from environment and store in Express.
@@ -114,8 +114,8 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 
-  art.font('node    api    server', 'Doom', function (rendered) {
-    console.log(rendered);
-  });
+  // art.font('node    api    server', 'Doom', function (rendered) {
+  //   console.log(rendered);
+  // });
   log("###########################################################################");
 }
