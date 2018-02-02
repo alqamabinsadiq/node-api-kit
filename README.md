@@ -112,5 +112,8 @@ Just go to the `./server/cors.js` and update the whitelist array.
 ## License
 This source code is licensed under the MIT license.
 
+## Contributing
+Feel free to make changes to the code and features. PR are welcomed.
+
 ---
 Made with ♥ by ALQAMA BIN SADIQ [github](https://github.com/alqamabinsadiq/node-api-kit)
