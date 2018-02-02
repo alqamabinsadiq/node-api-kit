@@ -34,7 +34,7 @@ This API kit will be running on a secure port `3443`. You can remove the code fo
 
 ## Getting Started
 
-Just clone the repo and run `npm install` by going into the `NODE-API-KIT` folder:
+Just clone the repo and run `npm install` by going into the `NODE-API-KIT` folder and then follow the instructions as described below.
 
 ### Generating Private Key and Certificate
 
@@ -100,6 +100,10 @@ Also remove the following code from `app.js`
 The API server must become available at [https://localhost:3443/api](https://localhost:3443/api) If you are using HTTPS.
 
 Otherwise it will be available at  [http://localhost:3000/api](http://localhost:3000/api)
+
+### MongoDB Configuration
+
+Please add the mongoDB url in `config.js` file and make sure that your mongoDB is up and running otherwise you will get an error.
 
 ### CORS Configuration
 
