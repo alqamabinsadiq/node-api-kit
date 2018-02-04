@@ -38,7 +38,8 @@ Just clone the repo and run `npm install` by going into the `NODE-API-KIT` folde
 
 ### Generating Private Key and Certificate
 
-The api is configured to run on a secure server. If you are using a macOS, go to the `bin` folder and then create the private key and certificate by typing the following at the prompt
+The api is configured to run on a normal server. If you want to enable the https server you have to uncomment the code for https as described below. For running a secure server you have to generate the private keys and certificate using openssl. 
+If you are using a macOS, go to the `bin` folder and then create the private key and certificate by typing the following at the prompt
 
 ```
   openssl genrsa 1024 > private.key
@@ -53,7 +54,7 @@ If you are using a Windows machine, you may need to install openssl. You can fin
 #### NOTE: 
 Please make sure that you have generated the certificate and the private key in the `bin` folder.
 
-### How To Run The API On Simple HTTP Server
+### How To Run The API On HTTPS Server
 
 If you want to run the api on a secure server you can uncomment the code anytime by simply going into the `/bin/www` folder. 
 
