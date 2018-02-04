@@ -3,7 +3,7 @@
 Creating the API structure for your projects again and again is very annoying and difficult especially for the starters.
 So I created an API structure which includes all the pre-requisites including the authentication(Which I think is the most difficult task to implement if you are a newbie)
 I want to make it public so that everyone can take benefit from it and contribute to make it even better.
-This API kit will be running on a port `300`. You can uncomment the code for `https` server in `./bin/www` and `app.js` if you want to run a secure sever.
+This API kit will be running on a port `3000`. You can uncomment the code for `https` server in `./bin/www` and `app.js` if you want to run a secure sever.
 
 
 ## Directory Layout
