@@ -3,7 +3,7 @@
 Creating the API structure for your projects again and again is very annoying and difficult especially for the starters.
 So I created an API structure which includes all the pre-requisites including the authentication(Which I think is the most difficult task to implement if you are a newbie)
 I want to make it public so that everyone can take benefit from it and contribute to make it even better.
-This API kit will be running on a secure port `3443`. You can remove the code for `https` server from `./bin/www`.
+This API kit will be running on a port `300`. You can uncomment the code for `https` server in `./bin/www` and `app.js` if you want to run a secure sever.
 
 
 ## Directory Layout
@@ -55,9 +55,9 @@ Please make sure that you have generated the certificate and the private key in 
 
 ### How To Run The API On Simple HTTP Server
 
-If you don't want to run the api on a secure server you can remove the code anytime by simply going into the `/bin/www` folder. 
+If you want to run the api on a secure server you can uncomment the code anytime by simply going into the `/bin/www` folder. 
 
-Remove the following code from `/bin/www`
+Uncomment the following code from `/bin/www`
 ```
   /**
   * Create HTTPS server.
@@ -81,7 +81,7 @@ Remove the following code from `/bin/www`
   secureServer.on('error', onError);
   secureServer.on('listening', onListening);
 ```
-Also remove the following code from `app.js`
+Also uncomment the following code from `app.js`
 
 ```
   // Remove the following code if you donot want to use secure server.
