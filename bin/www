@@ -39,7 +39,6 @@ server.on('listening', onListening);
 // Uncomment the following code if you want to use secure server.
 // /**
 //  * Create HTTPS server.
-//  * You can simple remove the secure server code by simply commenting it's section.
 //  */
 
 // // Read the certificate and private key from bin folder.

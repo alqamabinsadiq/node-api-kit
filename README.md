@@ -62,7 +62,6 @@ Uncomment the following code from `/bin/www`
 ```
   /**
   * Create HTTPS server.
-  * You can simple remove the secure server code by simply commenting it's section.
   */
 
   // Read the certificate and private key from bin folder.
@@ -85,7 +84,7 @@ Uncomment the following code from `/bin/www`
 Also uncomment the following code from `app.js`
 
 ```
-  // Remove the following code if you donot want to use secure server.
+  // Uncomment the following code if you want to use secure server.
   // Secure traffic only
   app.all('*', (req, res, next) => {
     if (req.secure) {
