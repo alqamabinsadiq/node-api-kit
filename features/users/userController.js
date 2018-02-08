@@ -87,7 +87,7 @@ exports.register = (req, res) => {
     });
 }
 
-exports.logout = (req, res) => {
+exports.logout = (req, res, next) => {
   if (req.session) {
     req.session.destroy();
     res.clearCookie('session-id');
