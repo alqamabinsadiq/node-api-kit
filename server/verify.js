@@ -1,11 +1,11 @@
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var User = require('../features/users/userModel');
-var JwtStrategy = require('passport-jwt').Strategy;
-var ExtractJwt = require('passport-jwt').ExtractJwt;
-var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
-var FacebookTokenStrategy = require('passport-facebook-token');
-var config = require('../config/config');
+let passport = require('passport');
+let LocalStrategy = require('passport-local').Strategy;
+let User = require('../features/users/userModel');
+let JwtStrategy = require('passport-jwt').Strategy;
+let ExtractJwt = require('passport-jwt').ExtractJwt;
+let jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
+let FacebookTokenStrategy = require('passport-facebook-token');
+let config = require('../config/config');
 const Iron = require('iron');
 
 // Returns the sign jwt
@@ -21,7 +21,7 @@ exports.verifyAdmin = (req, res, next) => {
     next();
   }
   else {
-    var err = new Error(`You are not authorized to perform this operation!`);
+    let err = new Error(`You are not authorized to perform this operation!`);
     err.status = 403;
     return next(err);
   }
@@ -35,7 +35,7 @@ exports.verifyUser = (req, res, next) => {
     // console.log('info', info);
     if (user === false && info && info.message === 'No auth token') {
       // Just unauthorized - nothing serious, so continue normally
-      var err = new Error(`No Token Provided`);
+      let err = new Error(`No Token Provided`);
       err.status = 403;
       next(err);
     }

@@ -1,13 +1,13 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var session = require('express-session');
-var FileStore = require('session-file-store')(session);
-var passport = require('passport');
-var authenticate = require('./server/authenticate');
+let express = require('express');
+let path = require('path');
+let favicon = require('serve-favicon');
+let logger = require('morgan');
+let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser');
+let session = require('express-session');
+let FileStore = require('session-file-store')(session);
+let passport = require('passport');
+let authenticate = require('./server/authenticate');
 const mongoose = require('mongoose');
 const database = require('./server/database');
 // Setup mongoose to use bluebird library for promise handling
@@ -17,7 +17,7 @@ mongoose.Promise = require('bluebird');
 database.connect();
 
 // express app.
-var app = express();
+let app = express();
 
 // Uncomment the following code if you want to use secure server.
 // Secure traffic only
@@ -52,7 +52,7 @@ require("./routes/router")(app);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  var err = new Error('Not Found');
+  let err = new Error('Not Found');
   err.status = 404;
   next(err);
 });

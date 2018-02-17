@@ -1,12 +1,12 @@
-var express = require('express');
-var passport = require('passport');
+let express = require('express');
+let passport = require('passport');
 const bodyParser = require('body-parser');
-var User = require('./userModel');
-var authenticate = require('../../server/authenticate');
+let User = require('./userModel');
+let authenticate = require('../../server/authenticate');
 const cors = require('../../server/cors');
 const userCtrl = require('./userController');
 const verify = require('../../server/verify');
-var router = express.Router();
+let router = express.Router();
 router.use(bodyParser.json());
 
 /* GET users listing. */

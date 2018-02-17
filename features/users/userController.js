@@ -3,9 +3,9 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 const User = require('./userModel');
 const authenticate = require('../../server/authenticate');
-var log = require('tracer').console({ format: "{{message}}  - {{file}}:{{line}}" }).log;
+let log = require('tracer').console({ format: "{{message}}  - {{file}}:{{line}}" }).log;
 const verify = require('../../server/verify');
-var Q = require('q');
+let Q = require('q');
 const Iron = require('iron');
 const config = require('../../config/config');
 
@@ -94,7 +94,7 @@ exports.logout = (req, res, next) => {
     res.redirect('/');
   }
   else {
-    var err = new Error('You are not logged in!');
+    let err = new Error('You are not logged in!');
     err.status = 403;
     next(err);
   }
@@ -106,7 +106,7 @@ exports.facebookAuthentication = (req, res) => {
       if (err) {
         deferred.reject(err);
       }
-      var token = verify.getToken({ _id: sealed }, expiry || "30 days");
+      let token = verify.getToken({ _id: sealed }, expiry || "30 days");
       res.statusCode = 200;
       res.setHeader('Content-Type', 'application/json');
       res.json({ success: true, token: token, status: 'You are successfully logged in!' });

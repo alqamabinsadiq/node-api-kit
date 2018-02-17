@@ -1,10 +1,10 @@
-var express = require('express');
-var users = require('../features/users/userRouter');
-//var log = require('tracer').console({format : "{{message}}  - {{file}}:{{line}}"}).log;
-// var verify = require('../server/verify');
+let express = require('express');
+let users = require('../features/users/userRouter');
+//let log = require('tracer').console({format : "{{message}}  - {{file}}:{{line}}"}).log;
+// let verify = require('../server/verify');
 
 module.exports = function (app, config, models) {
-  var router = express.Router();
+  let router = express.Router();
 
   router.use('/users', users);
 

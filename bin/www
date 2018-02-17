@@ -4,19 +4,19 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('confusionserver:server');
-var http = require('http');
-var https = require('https');
-var fs = require('fs');
-var log = require('tracer').console({ format: "{{message}}  - {{file}}:{{line}}" }).log;
-// var art = require('ascii-art');
+let app = require('../app');
+let debug = require('debug')('confusionserver:server');
+let http = require('http');
+let https = require('https');
+let fs = require('fs');
+let log = require('tracer').console({ format: "{{message}}  - {{file}}:{{line}}" }).log;
+// let art = require('ascii-art');
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+let port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 app.set('secPort', port + 443);
 
@@ -24,7 +24,7 @@ app.set('secPort', port + 443);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+let server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -42,12 +42,12 @@ server.on('listening', onListening);
 //  */
 
 // // Read the certificate and private key from bin folder.
-// var options = {
+// let options = {
 //   key: fs.readFileSync(__dirname + '/private.key'),
 //   cert: fs.readFileSync(__dirname + '/certificate.pem')
 // };
 
-// var secureServer = https.createServer(options, app);
+// let secureServer = https.createServer(options, app);
 // /**
 //  * Listen on provided port, on all network interfaces.
 //  */
@@ -64,7 +64,7 @@ server.on('listening', onListening);
  */
 
 function normalizePort(val) {
-  var port = parseInt(val, 10);
+  let port = parseInt(val, 10);
 
   if (isNaN(port)) {
     // named pipe
@@ -88,7 +88,7 @@ function onError(error) {
     throw error;
   }
 
-  var bind = typeof port === 'string'
+  let bind = typeof port === 'string'
     ? 'Pipe ' + port
     : 'Port ' + port;
 
@@ -112,8 +112,8 @@ function onError(error) {
  */
 
 function onListening() {
-  var addr = server.address();
-  var bind = typeof addr === 'string'
+  let addr = server.address();
+  let bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
