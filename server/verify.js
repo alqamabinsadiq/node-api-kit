@@ -50,8 +50,8 @@ exports.verifyUser = (req, res, next) => {
 }
 
 // Unseal the data which was encrypted using iron npm module.
-exports.unseal = function (req, res, next) {
-  Iron.unseal(req.user, config.sealPass, Iron.defaults, function (err, unsealed) {
+exports.unseal = (req, res, next) => {
+  Iron.unseal(req.user, config.sealPass, Iron.defaults, (err, unsealed) => {
     if (err) {
       return res.status(500).json({
         message: 'User verification error',

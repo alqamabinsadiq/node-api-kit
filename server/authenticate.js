@@ -29,7 +29,7 @@ opts.secretOrKey = config.secretKey;
 exports.jwtPassport = passport.use(new JwtStrategy(opts,
   (jwt_payload, done) => {
     console.log("JWT payload: ", jwt_payload);
-    Iron.unseal(jwt_payload._id, config.sealPass, Iron.defaults, function (err, unsealed) {
+    Iron.unseal(jwt_payload._id, config.sealPass, Iron.defaults, (err, unsealed) => {
       if (err) {
         return res.status(500).json({
           message: 'User verification error',
