@@ -1,5 +1,5 @@
 let express = require('express');
-let users = require('../features/users/userRouter');
+let users = require('../features/users/user.router');
 //let log = require('tracer').console({format : "{{message}}  - {{file}}:{{line}}"}).log;
 // let verify = require('../server/verify');
 

@@ -1,7 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const bodyParser = require('body-parser');
-const User = require('./userModel');
+const User = require('./user.model');
 const authenticate = require('../../server/authenticate');
 let log = require('tracer').console({ format: "{{message}}  - {{file}}:{{line}}" }).log;
 const verify = require('../../server/verify');

@@ -1,6 +1,6 @@
 let passport = require('passport');
 let LocalStrategy = require('passport-local').Strategy;
-let User = require('../features/users/userModel');
+let User = require('../features/users/user.model');
 let JwtStrategy = require('passport-jwt').Strategy;
 let ExtractJwt = require('passport-jwt').ExtractJwt;
 let jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
