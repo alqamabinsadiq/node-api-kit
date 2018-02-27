@@ -1,14 +1,14 @@
-let passport = require('passport');
-let LocalStrategy = require('passport-local').Strategy;
-let User = require('../features/users/user.model');
-let JwtStrategy = require('passport-jwt').Strategy;
-let ExtractJwt = require('passport-jwt').ExtractJwt;
-let jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
-let FacebookTokenStrategy = require('passport-facebook-token');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const User = require('../features/users/user.model');
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+const jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
+const FacebookTokenStrategy = require('passport-facebook-token');
 let Q = require('q');
 const Iron = require('iron');
 const verify = require('./verify');
-let config = require('../config/config');
+const config = require('../config/config');
 // passport.use(new LocalStrategy(here we supply the verify function since we are using passport mongoose
 // plugin so we can use authenticate method supplied by it ))
 exports.local = passport.use(new LocalStrategy(User.authenticate()));
@@ -65,7 +65,7 @@ exports.getLoginData = (user, expiry) => {
       deferred.reject(err);
     }
     // generate the jwt for the encrypted data.
-    let token = verify.getToken({ _id: sealed }, expiry || "30 days");
+    const token = verify.getToken({ _id: sealed }, expiry || "30 days");
     deferred.resolve(token);
   });
   return deferred.promise;
